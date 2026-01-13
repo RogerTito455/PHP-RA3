@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    echo "<h1> Ejercicios </h1>";
+    echo "<h1> Ejercicios RA3</h1>";
     echo "<h2>Ejercicio 1</h2>";
 
     $name = [
@@ -31,24 +31,24 @@
     echo "<br>";
     echo "<h2>Ejercicio 3</h2>";
     $name["edad"] = 24;
+    $i = 0; // Inicializar el contador
     foreach ($name as $key => $value) {
-        echo "$key: $value <br>";
+        echo "Dato " . ($i + 1) . "º: $value <br>";
+        $i++; // Incrementar el contador
     }
     echo "<br>";
     echo "<h2>Ejercicio 4</h2>";
-    $name = array_slice($name, 1, null, true);
 
     var_dump($name);
     echo "<h2>Ejercicio 5</h2>";
     $letters = "a,b,c,d,e,f";
-    $array = explode(",", $letters);
-    rsort($array);
+    $array_letters = explode(",", $letters);
+    rsort($array_letters);
 
 
-
-
-    foreach ($array as $item) {
-        echo $item . "<br>";
+    $count = count($array_letters);
+    foreach ($array_letters as $index => $letter) {
+        echo "letter " . ($count - $index) . "°: " . $letter . "<br>";
     }
 
     $notas = [
@@ -62,9 +62,9 @@
 
     arsort($notas);
     echo "<h2>Ejercicio 6</h2>";
-
+    echo "<span>Nota de los estudiantes: </span>";
     foreach ($notas as $nombre => $nota) {
-        echo "$nombre: $nota <br>";
+        echo "$nombre: $nota ";
     }
 
     echo "<h2>Ejercicio 7</h2>";
@@ -81,7 +81,7 @@
         }
     }
     echo "<h2>Ejercicio 8</h2>";
-    $maxNota = 0;  // Valor inicial muy bajo
+    $maxNota = 0;
     $mejorAlumno = "";
 
     foreach ($notas as $nombre => $nota) {
@@ -91,7 +91,7 @@
         }
     }
 
-    echo "Mejor alumno: $mejorAlumno con nota $maxNota";
+    echo "La nota más alta es ". $maxNota . " y el mejor alumno es " . $mejorAlumno ;
     ?>
 
 </body>
