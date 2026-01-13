@@ -30,7 +30,15 @@ function mostrarComicsEnTabla()
 
     foreach ($inventario as $categoria => $comics) {
         foreach ($comics as $comic) {
-
+            echo '<tr>';
+            echo "<td>$categoria</td>";
+            echo "<td>{$comic['titulo']}</td>";
+            echo "<td>{$comic['editorial']}</td>";
+            echo "<td>{$comic['autor']}</td>";
+            echo "<td>{$comic['idioma']}</td>";
+            echo "<td>{$comic['precio']}</td>";
+            echo "<td>{$comic['stock']}</td>";
+            echo '</tr>';
         }
     }
 
@@ -39,22 +47,27 @@ function mostrarComicsEnTabla()
 
 function mostrarValorAlmacen()
 {
+    // pending
     global $inventario;
-    $count = 0;
+    $total = 0;
     foreach ($inventario as $categoria => $comics) {
         foreach ($comics as $comic) {
-            $count += $inventario["stock"] * $inventario["precio"];
+            $total += $comic['precio'] * $comic['stock'];
         }
     }
-    echo "Valor total del almacen " . $count;
+    echo "Valor del almacen es: " . $total;
 }
+
 function aplicarDescuentoManga()
 {
     global $inventario;
 
-    foreach ($inventario['accion'] as &$comic) {
-        if ($comic['idioma'] == 'Japonés') {
-            $comic['precio'] = $comic['precio'] * 0.7; // Aplicar descuento del 30%
+ 
+    foreach ($inventario as &$categoria) {
+        foreach ($categoria as &$comic) {
+            if ($comic['idioma'] == 'Japonés') {
+                $comic['precio'] *= 0.7; // Aplicar descuento del 30%
+            }
         }
     }
 }
